@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\AM.Application.Core",
+    "\\AM.Application.Core\\Domain",
+    "\\AM.Application.Core\\Interfaces",
+    "\\AM.Application.Core\\Services",
+    "\\AM.UI.console"
+  ],
+  "SelectedNode": "\\AM.UI.console\\Program.cs",
+  "PreviewInSolutionExplorer": false
+}

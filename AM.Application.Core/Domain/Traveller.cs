@@ -8,6 +8,16 @@ namespace AM.Application.Core.Domain
 {
     public class Traveller:Passenger
     {
+        public Traveller()
+        {
+        }
+
+        public Traveller(string healthInformation, string nationality)
+        {
+            HealthInformation = healthInformation;
+            Nationality = nationality;
+        }
+
         public string HealthInformation { get; set; }
         public string Nationality
         {

@@ -20,8 +20,8 @@ namespace AM.Application.Core.Domain
             FlightId = flightId;
             EffectiveArrival = effectiveArrival;
             EstimateDuration = estimateDuration;
-            this.plane = plane;
-            this.passengers = passengers;
+            Plane = plane;
+            Passengers = passengers;
         }
 
         public string Destination { get; set; }
@@ -30,11 +30,11 @@ namespace AM.Application.Core.Domain
         public int FlightId { get; set; }
         public DateTime EffectiveArrival { get; set; }
         public int EstimateDuration { get; set; }
-        public Plane plane { get; set; }
-        public List<Passenger> passengers { get; set; }
+        public Plane Plane { get; set; }
+        public List<Passenger> Passengers { get; set; }
         public override string ToString()
         {
-            return $"[{Departure},{FlightDate},{EffectiveArrival},{EstimateDuration}]";
+            return "destination: "+Destination+" flightDate: "+FlightDate+" effectiveArrival: "+EffectiveArrival+ " EstimateDuration: " + EstimateDuration;
         }
     }
 }

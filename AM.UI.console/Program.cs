@@ -28,6 +28,9 @@
 using AM.Application.Core.Domain;
 using System.Net.Mail;
 using System.Security.Cryptography;
+using System.Collections;
+using System.Collections.Generic;
+using AM.Application.Core.Services;
 
 //Person personne = new Person();
 //personne.Id = 0;
@@ -59,7 +62,7 @@ using System.Security.Cryptography;
 //    ManufactureDate = new DateTime(2015, 02, 03)
 //};
 
-Console.WriteLine("************************************ Testing Signature Polymorphisme ****************************** ");
+/*Console.WriteLine("************************************ Testing Signature Polymorphisme ****************************** ");
 Passenger p1 = new Passenger { FirstName = "steave", LastName = "jobs", EmailAddress = "steeve.jobs@gmail.com", BirthDate = new DateTime(1955, 01, 01) };
 Console.WriteLine("La méthode CheckProfile:");
 Console.WriteLine(p1.CheckProfile("steave", "jobs"));
@@ -74,6 +77,45 @@ Console.WriteLine("La méthode PassengerType s1:");
 s1.PassengerType();
 Console.WriteLine("La méthode PassengerType t1:");
 t1.PassengerType();
+
+ArrayList List=new ArrayList(); 
+List.Add(p1);
+List.Add(12);
+foreach (Object item in List)
+{
+    Console.WriteLine(item);
+}
+List<int> ints = new List<int>();
+ints.Add(1);
+ints.Add(2);
+List<Plane> planes= new List<Plane>() { new Plane()  };*/
+
+
+
+ServiceFlight service = new ServiceFlight();
+service.Flights = TestData.ListFlights;
+string destination = "Paris";
+List<DateTime> dates = service.GetFlightDates(destination);
+
+foreach (DateTime date in dates)
+{
+    Console.WriteLine(date);
+}
+
+List<Flight> flights = service.GetFlights("Destination","Paris");
+foreach (Flight flight in flights)
+{
+    Console.WriteLine(flight);
+}
+
+IEnumerable<DateTime> dates1=service.GetFlightDates("Paris");
+foreach (DateTime date in dates1)
+{
+    Console.WriteLine(date);
+}
+
+
+
 
 
 
