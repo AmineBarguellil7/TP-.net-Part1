@@ -97,7 +97,7 @@ service.Flights = TestData.ListFlights;
 string destination = "Paris";
 List<DateTime> dates = service.GetFlightDates(destination);
 
-foreach (DateTime date in dates)
+/*foreach (DateTime date in dates)
 {
     Console.WriteLine(date);
 }
@@ -112,7 +112,33 @@ IEnumerable<DateTime> dates1=service.GetFlightDates("Paris");
 foreach (DateTime date in dates1)
 {
     Console.WriteLine(date);
+}*/
+
+//Action<string, int> action;
+//action = delegate (string a, int b) { Console.WriteLine(a + " " + b); };
+//action("hello", 2);
+//static void Test(string a, int v) { Console.WriteLine(a+" "+v); }; //meme principe que action
+//Test("amine",2);
+//static double Test2(Boolean a, string b) { return 0; };
+//Console.WriteLine(Test2(true,"amine"));
+//Func<Boolean, string, double> func;
+//func = (Boolean a, string b) => 10;    //meme principe que func
+//double a = func(true, "abc");
+//Console.WriteLine(a);
+//string a = "Paris";
+//service.GetFlights("Paris",
+/*delegate (string a, Flight flight)
+{
+    return flight.Destination == a;
+});*/
+
+
+foreach (DateTime date in service.GetFlightDates("Paris"))
+{
+    Console.WriteLine(date);
 }
+
+
 
 
 
