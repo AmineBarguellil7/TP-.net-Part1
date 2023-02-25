@@ -146,8 +146,8 @@ foreach (DateTime date in dates1)
     Console.WriteLine(flight);
 }*/
 
-//PassengerExtension passenger = new PassengerExtension(0000, "amine", "barguellil");
-//Console.WriteLine(passenger);
+PassengerExtension passenger = new PassengerExtension();
+Console.WriteLine(passenger.UpperFullName(service.Flights[0].Passengers[0]));
 
 
 

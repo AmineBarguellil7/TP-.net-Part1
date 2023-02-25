@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 
 namespace AM.Application.Core.Services
 {
-    public class PassengerExtension : Passenger
+    public  class PassengerExtension : Passenger
     {
-        public string UpperFullName()
+        public string UpperFullName(Passenger passenger)
         {
-            return "";
+            string firstName = passenger.FirstName;
+            string lastName = passenger.LastName;
+            firstName = char.ToUpper(firstName[0]) + firstName.Substring(1);
+            lastName = char.ToUpper(lastName[0]) + lastName.Substring(1);
+            return firstName+" "+lastName;
         }
     }
 }
