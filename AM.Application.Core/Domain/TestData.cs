@@ -15,7 +15,7 @@ namespace AM.Application.Core.Domain
         public static List<Flight> ListFlights { get; set; } = new List<Flight>()
         {
             new Flight { FlightDate = new DateTime(2022, 01, 01, 15, 10, 10), Destination = "Paris", EffectiveArrival = new DateTime(2022, 01, 01, 17, 10, 10), Plane = Planes[1], EstimateDuration = 110, Passengers = new List<Passenger>(Travellers) },
-            new Flight { FlightDate = new DateTime(2022, 02, 01, 21, 10, 10), Destination = "Paris", EffectiveArrival = new DateTime(2022, 02, 01, 23, 10, 10), Plane = Planes[1], EstimateDuration = 110 }
+            new Flight { FlightDate = new DateTime(2022, 02, 01, 21, 10, 10), Destination = "Paris", EffectiveArrival = new DateTime(2022, 02, 01, 23, 10, 10), Plane = Planes[1], EstimateDuration = 650 }
         };
     }
 }

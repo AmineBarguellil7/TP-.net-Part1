@@ -23,6 +23,13 @@ namespace AM.Application.Core.Domain
             ListFlight = listFlight;
         }
 
+        public Passenger(int passportNmber, string firstName, string lastName)
+        {
+            PassportNmber = passportNmber;
+            FirstName = firstName;
+            LastName = lastName;
+        }
+
         public DateTime BirthDate { get; set; }
         public int PassportNmber { get; set; }
         public string EmailAddress { get; set; }
@@ -32,7 +39,7 @@ namespace AM.Application.Core.Domain
         public List<Flight> ListFlight { get; set; }
         public override string ToString()
         {
-            return $"[{BirthDate},{EmailAddress},{LastName},{TelNumber}]";
+            return FirstName + " " + LastName;
         }
         ////public bool CheckProfile(string firstName, string lastName)
         ////{

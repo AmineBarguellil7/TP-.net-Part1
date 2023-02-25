@@ -133,10 +133,24 @@ foreach (DateTime date in dates1)
 });*/
 
 
-foreach (DateTime date in service.GetFlightDates("Paris"))
+/*foreach (DateTime date in service.GetFlightDates("Paris"))
 {
     Console.WriteLine(date);
-}
+}*/
+
+//service.FlightDetailsDel(service.Flights[0].Plane);
+//Console.WriteLine(service.DurationAverageDel("Paris"));
+
+/*foreach (Flight flight in service.GetFlights("Destination", "Paris"))
+{
+    Console.WriteLine(flight);
+}*/
+
+//PassengerExtension passenger = new PassengerExtension(0000, "amine", "barguellil");
+//Console.WriteLine(passenger);
+
+
+
 
 
 

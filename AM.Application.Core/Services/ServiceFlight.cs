@@ -13,35 +13,23 @@ namespace AM.Application.Core.Services
     {
         public List<Flight> Flights { get; set; } = new List<Flight>();
 
-        /*public List<DateTime> GetFlightDates(string destination)
-        {
-            List<DateTime> dates = new List<DateTime>();
-            for (int i = 0; i < Flights.Count; i++)
-            {
-                if (Flights[i].Destination == destination)
-                {
-                    dates.Add(Flights[i].FlightDate);
-                }
-            };
-            return dates;
-        }*/
-
-        public void GetFlights(string filterValue, Func<string, Flight, Boolean> func)
-        {
-            Func<string, Flight, Boolean> Condition = func;
-            foreach (var item in Flights)
-            {
-                if (Condition(filterValue, item))
-                {
-                    Console.WriteLine(item);
-                }
-            }
-        }
+        //public void GetFlights(string filterValue, Func<string, Flight, Boolean> func)
+        //{
+        //    Func<string, Flight, Boolean> Condition = func;
+        //    foreach (var item in Flights)
+        //    {
+        //        if (Condition(filterValue, item))
+        //        {
+        //            Console.WriteLine(item);
+        //        }
+        //    }
+        //}
 
 
 
 
-        /*public List<Flight> GetFlights(string filterType, string filterValue)
+
+        public List<Flight> GetFlights(string filterType, string filterValue)
         {
             List<Flight> filteredFlights = new List<Flight>();
 
@@ -73,22 +61,12 @@ namespace AM.Application.Core.Services
             }
 
             return filteredFlights;
-        }*/
-
-
-
-
-        public IEnumerable<DateTime> GettFlightDates(string destination)
-        {
-            foreach (Flight flight in Flights)
-            {
-                if (flight.Destination == destination)
-                {
-
-                    yield return flight.FlightDate;
-                }
-            }
         }
+
+
+
+
+        
 
         //LINQ
 
@@ -123,12 +101,12 @@ namespace AM.Application.Core.Services
 
         public void ShowFlightDetails(Domain.Plane plane)
         {
-                //var req = from f in Flights where f.Plane == plane select new { f.FlightDate, f.Destination };
-                //foreach(var item in req)
-                //{
-                //    Console.WriteLine(item.Destination+" "+item.FlightDate);
-                //}
-                var req = Flights.Where(f => f.Plane == plane).Select(f => new { f.FlightDate, f.Destination });
+            var req = from f in Flights where f.Plane == plane select new { f.FlightDate, f.Destination };
+            foreach (var item in req)
+            {
+                Console.WriteLine(item.Destination + " " + item.FlightDate);
+            }
+            //var req = Flights.Where(f => f.Plane == plane).Select(f => new { f.FlightDate, f.Destination });
         }
 
         public IList<Flight> OrderedDurationFlights()
@@ -158,12 +136,50 @@ namespace AM.Application.Core.Services
         }
 
 
-        Action<Domain.Plane> FlightDetailsDel;
-        Func<String, float> DurationAverageDel;
+
+       
+
+        public IEnumerable<DateTime> GettFlightDates1(string destination)
+        {
+            foreach (Flight flight in Flights)
+            {
+                if (flight.Destination == destination)
+                {
+
+                    yield return flight.FlightDate;
+                }
+            }
+        }
+
+        public List<DateTime> GetFlightDates2(string destination)
+        {
+            List<DateTime> dates = new List<DateTime>();
+            for (int i = 0; i < Flights.Count; i++)
+            {
+                if (Flights[i].Destination == destination)
+                {
+                    dates.Add(Flights[i].FlightDate);
+                }
+            };
+            return dates;
+        }
+
+        public Action<Domain.Plane> FlightDetailsDel { get; set; }
+
+        public Func<string, double> DurationAverageDel { get; set; }
 
         public ServiceFlight()
         {
-            //ShowFlightDetails = FlightDetailsDel(Flights.);
+            //FlightDetailsDel = ShowFlightDetails;
+            //DurationAverageDel = DurationAverage;
+            FlightDetailsDel = (plane) =>
+            {
+                ShowFlightDetails(plane);
+            };
+            DurationAverageDel = (destination) =>
+            {
+                return DurationAverage(destination);
+            };
         }
     }
 
@@ -174,4 +190,4 @@ namespace AM.Application.Core.Services
 
 //query par defaut treturni hkaya barka ithakan nheb nraja3 akther men hkaya nbadal var query wa nbadel
 //select new {f.Destination,f.FlightDate} 
-//var query=Flights.where(f=>f.Destination=="Paris).select(f=>)
+//var query=Flights.where(f=>f.Destination=="Paris).select(f=>...)

@@ -10,9 +10,10 @@ namespace AM.Application.Core.Interfaces
     public interface IServiceFlight
     {
         List<DateTime> GetFlightDates(string destination);
-        //List<Flight> GetFlights(string filterType, string filterValue);
-        public void GetFlights(string filterValue, Func<string, Flight, Boolean> func);
-        IEnumerable<DateTime> GettFlightDates(string destination);
+        List<DateTime> GetFlightDates2(string destination);
+        List<Flight> GetFlights(string filterType, string filterValue);
+        //public void GetFlights(string filterValue, Func<string, Flight, Boolean> func);
+        IEnumerable<DateTime> GettFlightDates1(string destination);
         void ShowFlightDetails(Plane plane);
         int ProgrammedFlightNumber(DateTime startDate);
         double DurationAverage(string destination);
