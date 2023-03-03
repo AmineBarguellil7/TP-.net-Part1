@@ -171,7 +171,7 @@ namespace AM.Application.Core.Services
         public ServiceFlight()
         {
             //FlightDetailsDel = ShowFlightDetails;
-            //DurationAverageDel = DurationAverage;
+            //DurationAverageDel = DurationAverage;    
             FlightDetailsDel = (plane) =>
             {
                 ShowFlightDetails(plane);
