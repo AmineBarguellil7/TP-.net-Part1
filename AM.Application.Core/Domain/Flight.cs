@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,8 @@ namespace AM.Application.Core.Domain
         public int FlightId { get; set; }
         public DateTime EffectiveArrival { get; set; }
         public int EstimateDuration { get; set; }
+        [ForeignKey("Plane")]
+        public int PlaneId { get; set; }
         public Plane Plane { get; set; }
         public List<Passenger> Passengers { get; set; }
         public override string ToString()

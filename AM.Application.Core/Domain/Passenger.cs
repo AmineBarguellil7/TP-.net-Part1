@@ -31,13 +31,19 @@ namespace AM.Application.Core.Domain
             LastName = lastName;
         }
 
+        [Display(Name ="Date of Birth")]
+        [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
 
         [Key]
+        [StringLength(7)]
         public int PassportNmber { get; set; }
+        [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
+        [StringLength(25, MinimumLength = 3, ErrorMessage = "Le prénom doit avoir entre 3 et 25 caractères.")]
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "Le numéro de téléphone doit contenir 8 chiffres.")]
         public string TelNumber { get; set; }
         public List<Flight> ListFlight { get; set; }
         public override string ToString()
