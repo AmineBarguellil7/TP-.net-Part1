@@ -11,25 +11,7 @@ namespace AM.Application.Core.Domain
     {
         public Passenger()
         {
-        }
-
-        public Passenger(DateTime birthDate, int passportNmber, string emailAddress, string firstName, string lastName, string telNumber, List<Flight> listFlight)
-        {
-            BirthDate = birthDate;
-            PassportNmber = passportNmber;
-            EmailAddress = emailAddress;
-            FirstName = firstName;
-            LastName = lastName;
-            TelNumber = telNumber;
-            ListFlight = listFlight;
-        }
-
-        public Passenger(int passportNmber, string firstName, string lastName)
-        {
-            PassportNmber = passportNmber;
-            FirstName = firstName;
-            LastName = lastName;
-        }
+        } 
 
         [Display(Name ="Date of Birth")]
         [DataType(DataType.Date)]
@@ -41,15 +23,13 @@ namespace AM.Application.Core.Domain
         [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
         [StringLength(25, MinimumLength = 3, ErrorMessage = "Le prénom doit avoir entre 3 et 25 caractères.")]
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public FullName fullName { get; set; }
+        //public string FirstName { get; set; }
+        //public string LastName { get; set; }
         [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "Le numéro de téléphone doit contenir 8 chiffres.")]
         public string TelNumber { get; set; }
         public List<Flight> ListFlight { get; set; }
-        public override string ToString()
-        {
-            return FirstName + " " + LastName;
-        }
+        
         ////public bool CheckProfile(string firstName, string lastName)
         ////{
         ////    return FirstName == firstName && LastName == lastName;
@@ -60,13 +40,13 @@ namespace AM.Application.Core.Domain
         ////    return FirstName == firstName && LastName == lastName && EmailAddress == email;
         ////}
 
-        public bool CheckProfile(string firstName, string lastName, string email = null)
-        {
-            if (email != null)
-                return FirstName == firstName && LastName == lastName && EmailAddress == email;
-            else
-                return FirstName == firstName && LastName == lastName;
-        }
+        //public bool CheckProfile(string firstName, string lastName, string email = null)
+        //{
+        //    if (email != null)
+        //        return FirstName == firstName && LastName == lastName && EmailAddress == email;
+        //    else
+        //        return FirstName == firstName && LastName == lastName;
+        //}
 
         public virtual void PassengerType()
         {

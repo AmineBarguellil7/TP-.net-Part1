@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AM.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class Change : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,19 +15,19 @@ namespace AM.Infrastructure.Migrations
                 name: "Passengers",
                 columns: table => new
                 {
-                    PassportNmber = table.Column<int>(type: "int", nullable: false)
+                    PassportNmber = table.Column<int>(type: "int", maxLength: 7, nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EmailAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TelNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EmployementDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Function = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BirthDate = table.Column<DateTime>(type: "date", nullable: false),
+                    EmailAddress = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    fullName_FirstName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    fullName_LastName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    TelNumber = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    Discriminator = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    EmployementDate = table.Column<DateTime>(type: "date", nullable: true),
+                    Function = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
                     Salary = table.Column<float>(type: "real", nullable: true),
-                    HealthInformation = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Nationality = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    HealthInformation = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    Nationality = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -41,7 +41,7 @@ namespace AM.Infrastructure.Migrations
                     PlaneId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Capacity = table.Column<int>(type: "int", nullable: false),
-                    ManufactureDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ManufactureDate = table.Column<DateTime>(type: "date", nullable: false),
                     PlaneType = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -55,12 +55,12 @@ namespace AM.Infrastructure.Migrations
                 {
                     FlightId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Destination = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Departure = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FlightDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EffectiveArrival = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Destination = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    Departure = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    FlightDate = table.Column<DateTime>(type: "date", nullable: false),
+                    EffectiveArrival = table.Column<DateTime>(type: "date", nullable: false),
                     EstimateDuration = table.Column<int>(type: "int", nullable: false),
-                    PlaneId = table.Column<int>(type: "int", nullable: false)
+                    PlaneId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -69,8 +69,7 @@ namespace AM.Infrastructure.Migrations
                         name: "FK_Flights_Planes_PlaneId",
                         column: x => x.PlaneId,
                         principalTable: "Planes",
-                        principalColumn: "PlaneId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "PlaneId");
                 });
 
             migrationBuilder.CreateTable(

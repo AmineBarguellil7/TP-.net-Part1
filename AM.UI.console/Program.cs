@@ -92,10 +92,10 @@ List<Plane> planes= new List<Plane>() { new Plane()  };*/
 
 
 
-ServiceFlight service = new ServiceFlight();
-service.Flights = TestData.ListFlights;
-string destination = "Paris";
-List<DateTime> dates = service.GetFlightDates(destination);
+//ServiceFlight service = new ServiceFlight();
+//service.Flights = TestData.ListFlights;
+//string destination = "Paris";
+//List<DateTime> dates = service.GetFlightDates(destination);
 
 /*foreach (DateTime date in dates)
 {
@@ -152,8 +152,8 @@ foreach (DateTime date in dates1)
 
 int x = 45;
 Console.WriteLine(x.Add(4));
-Passenger passenger= service.Flights[0].Passengers[0];
-passenger.UpperFullName();
+//Passenger passenger= service.Flights[0].Passengers[0];
+//passenger.UpperFullName();
 
 
 

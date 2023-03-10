@@ -32,8 +32,8 @@ namespace AM.Application.Core.Domain
         public DateTime EffectiveArrival { get; set; }
         public int EstimateDuration { get; set; }
         [ForeignKey("Plane")]
-        public int PlaneId { get; set; }
-        public Plane Plane { get; set; }
+        public int ? PlaneId { get; set; }   //? --->colonne nullable
+        public Plane ? Plane { get; set; }
         public List<Passenger> Passengers { get; set; }
         public override string ToString()
         {
