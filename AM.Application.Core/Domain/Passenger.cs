@@ -28,7 +28,9 @@ namespace AM.Application.Core.Domain
         //public string LastName { get; set; }
         [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "Le numéro de téléphone doit contenir 8 chiffres.")]
         public string TelNumber { get; set; }
-        public List<Flight> ListFlight { get; set; }
+        public virtual List<Flight> ListFlight { get; set; }
+
+        public virtual IList<Ticket> tickets { get; set; }
         
         ////public bool CheckProfile(string firstName, string lastName)
         ////{

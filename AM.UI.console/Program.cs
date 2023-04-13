@@ -31,6 +31,7 @@ using System.Security.Cryptography;
 using System.Collections;
 using System.Collections.Generic;
 using AM.Application.Core.Services;
+using AM.Infrastructure;
 
 //Person personne = new Person();
 //personne.Id = 0;
@@ -155,11 +156,38 @@ Console.WriteLine(x.Add(4));
 //Passenger passenger= service.Flights[0].Passengers[0];
 //passenger.UpperFullName();
 
+AmContext context=new AmContext();
+context.Flights.Add(new Flight()
+{
+    EffectiveArrival = new DateTime(2024, 10, 12),
+    Departure= "Tunis",
+    Destination="France",
+    EstimateDuration= 1,
+    FlightDate= new DateTime(2024,04,15),
+    Plane=new Plane()
+    {
+        Capacity= 20,
+        ManufactureDate= new DateTime(2023,09,10),
+        PlaneType=PlaneType.Boing
+    }
+}) ;
+
+context.SaveChanges();
+
+
+//foreach (var item in context.Flights.ToList())
+//{
+ //   Console.WriteLine(item.Departure+item.Destination+item.Plane.Capacity);
+//}
 
 
 
 
 
+
+
+
+//Par convention cle primaire ism le classe ba3d Id walla Id par defaut yakhothha cle primaire
 
 
 

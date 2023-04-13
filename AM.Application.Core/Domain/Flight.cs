@@ -33,8 +33,10 @@ namespace AM.Application.Core.Domain
         public int EstimateDuration { get; set; }
         [ForeignKey("Plane")]
         public int ? PlaneId { get; set; }   //? --->colonne nullable
-        public Plane ? Plane { get; set; }
-        public List<Passenger> Passengers { get; set; }
+        public virtual Plane ? Plane { get; set; }
+        public virtual List<Passenger> Passengers { get; set; }
+
+        public virtual IList<Ticket> Tickets { get; set; }
         public override string ToString()
         {
             return "destination: "+Destination+" flightDate: "+FlightDate+" effectiveArrival: "+EffectiveArrival+ " EstimateDuration: " + EstimateDuration;

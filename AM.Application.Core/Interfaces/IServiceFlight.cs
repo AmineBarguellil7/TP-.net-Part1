@@ -1,4 +1,5 @@
 ﻿using AM.Application.Core.Domain;
+using AM.ApplicationCore.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AM.Application.Core.Interfaces
 {
-    public interface IServiceFlight
+    public interface IServiceFlight:IService<Plane>
     {
         List<DateTime> GetFlightDates(string destination);
         List<DateTime> GetFlightDates2(string destination);

@@ -1,15 +1,18 @@
 ﻿using AM.Application.Core.Domain;
 using AM.Application.Core.Interfaces;
+using AM.ApplicationCore.Interfaces;
+using AM.ApplicationCore.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AM.Application.Core.Services
 {
-    public class ServiceFlight:IServiceFlight
+    public class ServiceFlight:Service<Flight>,IServiceFlight
     {
         public List<Flight> Flights { get; set; } = new List<Flight>();
 
@@ -164,11 +167,51 @@ namespace AM.Application.Core.Services
             return dates;
         }
 
+        public void Add(Domain.Plane entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Domain.Plane entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Domain.Plane entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Expression<Func<Domain.Plane, bool>> where)
+        {
+            throw new NotImplementedException();
+        }
+
+        Domain.Plane IService<Domain.Plane>.GetById(params object[] id)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<Domain.Plane> IService<Domain.Plane>.GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Domain.Plane> GetMany(Expression<Func<Domain.Plane, bool>> where)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Domain.Plane Get(Expression<Func<Domain.Plane, bool>> where)
+        {
+            throw new NotImplementedException();
+        }
+
         public Action<Domain.Plane> FlightDetailsDel { get; set; }
 
         public Func<string, double> DurationAverageDel { get; set; }
 
-        public ServiceFlight()
+        public ServiceFlight(IUnitOfWork unitOfWork) :base(unitOfWork) 
         {
             //FlightDetailsDel = ShowFlightDetails;
             //DurationAverageDel = DurationAverage;    

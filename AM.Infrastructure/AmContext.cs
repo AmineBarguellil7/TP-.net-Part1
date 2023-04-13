@@ -17,6 +17,7 @@ namespace AM.Infrastructure
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"data source=(localdb)\mssqllocaldb; initial catalog=amineBarguellil; integrated security=true");
+            optionsBuilder.UseLazyLoadingProxies();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -28,6 +29,12 @@ namespace AM.Infrastructure
             //        .IsRequired()
             //        .HasColumnType("varchar");
             modelBuilder.ApplyConfiguration(new PlaneConfiguration());
+            //modelBuilder.ApplyConfiguration(new PassengerConfiguration());
+            modelBuilder.ApplyConfiguration(new TicketConfiguration());
+            //Strategie TPT
+            modelBuilder.Entity<Passenger>().ToTable(nameof(Passengers));
+            modelBuilder.Entity<Staff>().ToTable(nameof(Staffs));
+            modelBuilder.Entity<Traveller>().ToTable(nameof(Travellers));
         }
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
         {

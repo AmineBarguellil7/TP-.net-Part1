@@ -18,6 +18,10 @@ namespace AM.Infrastructure.Configuration
                 h.Property(f => f.FirstName).HasColumnName("first_name").HasMaxLength(20).HasColumnType("varchar");
                 h.Property(f => f.LastName).HasColumnName("last_name").HasMaxLength(20).HasColumnType("varchar");
             });
+            builder.HasDiscriminator<Char>("Type")
+                .HasValue<Passenger>('A')
+                .HasValue<Staff>('B')
+                .HasValue<Traveller>('C');
         }
     }
 }

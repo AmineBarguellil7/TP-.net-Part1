@@ -20,7 +20,7 @@ namespace AM.Application.Core.Domain
         [Display(Name ="firstname")]
 
         public string FirstName { get; set; }
-        [Display(Name = "lirstname")]
+        [Display(Name = "lastname")]
         public string LastName { get; set; }
     }
 

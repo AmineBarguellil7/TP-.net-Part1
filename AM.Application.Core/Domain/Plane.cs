@@ -25,7 +25,8 @@ namespace AM.Application.Core.Domain
 
         public int PlaneId { get; set; }
         public PlaneType PlaneType { get; set; }
-        public List<Flight> Flights { get; set; }
+
+        public virtual List<Flight> Flights { get; set; }
         public override string ToString()
         {
             return $"[{PlaneId},{ManufactureDate},{Capacity},{PlaneType}]";

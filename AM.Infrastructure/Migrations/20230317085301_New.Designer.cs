@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AM.Infrastructure.Migrations
 {
     [DbContext(typeof(AmContext))]
-    [Migration("20230310112410_Change")]
-    partial class Change
+    [Migration("20230317085301_New")]
+    partial class New
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,11 +74,6 @@ namespace AM.Infrastructure.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("date");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar");
-
                     b.Property<string>("EmailAddress")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -91,11 +86,9 @@ namespace AM.Infrastructure.Migrations
 
                     b.HasKey("PassportNmber");
 
-                    b.ToTable("Passengers");
+                    b.ToTable("Passenger", (string)null);
 
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Passenger");
-
-                    b.UseTphMappingStrategy();
+                    b.UseTptMappingStrategy();
                 });
 
             modelBuilder.Entity("AM.Application.Core.Domain.Plane", b =>
@@ -107,7 +100,8 @@ namespace AM.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PlaneId"));
 
                     b.Property<int>("Capacity")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("PlaneCapacity");
 
                     b.Property<DateTime>("ManufactureDate")
                         .HasColumnType("date");
@@ -117,7 +111,7 @@ namespace AM.Infrastructure.Migrations
 
                     b.HasKey("PlaneId");
 
-                    b.ToTable("Planes");
+                    b.ToTable("MyPlanes", (string)null);
                 });
 
             modelBuilder.Entity("FlightPassenger", b =>
@@ -150,7 +144,7 @@ namespace AM.Infrastructure.Migrations
                     b.Property<float>("Salary")
                         .HasColumnType("real");
 
-                    b.HasDiscriminator().HasValue("Staff");
+                    b.ToTable("Staff", (string)null);
                 });
 
             modelBuilder.Entity("AM.Application.Core.Domain.Traveller", b =>
@@ -167,7 +161,7 @@ namespace AM.Infrastructure.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("varchar");
 
-                    b.HasDiscriminator().HasValue("Traveller");
+                    b.ToTable("Traveller", (string)null);
                 });
 
             modelBuilder.Entity("AM.Application.Core.Domain.Flight", b =>
@@ -198,7 +192,7 @@ namespace AM.Infrastructure.Migrations
 
                             b1.HasKey("PassengerPassportNmber");
 
-                            b1.ToTable("Passengers");
+                            b1.ToTable("Passenger");
 
                             b1.WithOwner()
                                 .HasForeignKey("PassengerPassportNmber");
@@ -219,6 +213,24 @@ namespace AM.Infrastructure.Migrations
                     b.HasOne("AM.Application.Core.Domain.Passenger", null)
                         .WithMany()
                         .HasForeignKey("PassengersPassportNmber")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("AM.Application.Core.Domain.Staff", b =>
+                {
+                    b.HasOne("AM.Application.Core.Domain.Passenger", null)
+                        .WithOne()
+                        .HasForeignKey("AM.Application.Core.Domain.Staff", "PassportNmber")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("AM.Application.Core.Domain.Traveller", b =>
+                {
+                    b.HasOne("AM.Application.Core.Domain.Passenger", null)
+                        .WithOne()
+                        .HasForeignKey("AM.Application.Core.Domain.Traveller", "PassportNmber")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
