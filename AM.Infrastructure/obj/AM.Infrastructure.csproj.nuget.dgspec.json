@@ -4,14 +4,14 @@
     "C:\\Users\\Amine Barguellil\\source\\repos\\aminebarguellil\\AM.Infrastructure\\AM.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Amine Barguellil\\source\\repos\\aminebarguellil\\AM.Application.Core\\AM.Application.Core.csproj": {
+    "C:\\Users\\Amine Barguellil\\source\\repos\\aminebarguellil\\AM.ApplicationCore\\AM.ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Amine Barguellil\\source\\repos\\aminebarguellil\\AM.Application.Core\\AM.Application.Core.csproj",
-        "projectName": "AM.Application.Core",
-        "projectPath": "C:\\Users\\Amine Barguellil\\source\\repos\\aminebarguellil\\AM.Application.Core\\AM.Application.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Amine Barguellil\\source\\repos\\aminebarguellil\\AM.ApplicationCore\\AM.ApplicationCore.csproj",
+        "projectName": "AM.ApplicationCore",
+        "projectPath": "C:\\Users\\Amine Barguellil\\source\\repos\\aminebarguellil\\AM.ApplicationCore\\AM.ApplicationCore.csproj",
         "packagesPath": "C:\\Users\\Amine Barguellil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Amine Barguellil\\source\\repos\\aminebarguellil\\AM.Application.Core\\obj\\",
+        "outputPath": "C:\\Users\\Amine Barguellil\\source\\repos\\aminebarguellil\\AM.ApplicationCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Amine Barguellil\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -42,7 +42,7 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.3, )"
+              "version": "[6.0.9, )"
             }
           },
           "imports": [
@@ -89,8 +89,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Amine Barguellil\\source\\repos\\aminebarguellil\\AM.Application.Core\\AM.Application.Core.csproj": {
-                "projectPath": "C:\\Users\\Amine Barguellil\\source\\repos\\aminebarguellil\\AM.Application.Core\\AM.Application.Core.csproj"
+              "C:\\Users\\Amine Barguellil\\source\\repos\\aminebarguellil\\AM.ApplicationCore\\AM.ApplicationCore.csproj": {
+                "projectPath": "C:\\Users\\Amine Barguellil\\source\\repos\\aminebarguellil\\AM.ApplicationCore\\AM.ApplicationCore.csproj"
               }
             }
           }
@@ -107,21 +107,21 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.3, )"
+              "version": "[6.0.9, )"
             },
             "Microsoft.EntityFrameworkCore.Proxies": {
               "target": "Package",
-              "version": "[7.0.3, )"
+              "version": "[6.0.9, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[7.0.3, )"
+              "version": "[6.0.9, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.3, )"
+              "version": "[6.0.9, )"
             }
           },
           "imports": [
